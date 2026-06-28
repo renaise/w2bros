@@ -78,21 +78,26 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .hero .emblem{filter:drop-shadow(0 0 18px var(--cyan));animation:throb 2.4s ease-in-out infinite}
   @keyframes throb{50%{transform:scale(1.06)}}
-  .biglogo{margin-top:14px;line-height:.8;filter:drop-shadow(0 6px 20px rgba(40,120,255,.35))}
-  .biglogo .l1{font-family:'Roboto Slab';font-weight:900;font-size:clamp(22px,5.5vw,46px);
-    letter-spacing:1px;color:#fff;text-shadow:0 2px 14px rgba(120,200,255,.5)}
+  .biglogo{margin-top:14px;line-height:.74;filter:drop-shadow(0 8px 22px rgba(20,60,160,.45))}
+  /* arched SUPER */
+  .biglogo .super-arc{display:block;width:min(54%,300px);margin:0 auto -2px;height:54px;overflow:visible}
+  .biglogo .super-arc text{font-family:'Roboto Slab';font-weight:900;font-size:42px;fill:#fff;
+    letter-spacing:2px;paint-order:stroke;stroke:#fff;stroke-width:2px}
+  /* big stacked words with fan perspective */
+  .biglogo .stack{transform:perspective(620px) rotateX(11deg);transform-origin:center top}
   .biglogo .l2,.biglogo .l2b{font-family:'Roboto Slab';font-weight:900;color:#fff;
-    text-transform:uppercase;letter-spacing:0;line-height:.84;
-    text-shadow:0 2px 0 #0a1330,0 0 30px rgba(80,170,255,.5)}
-  .biglogo .l2{font-size:clamp(34px,9vw,84px)}
-  .biglogo .l2b{font-size:clamp(50px,13.5vw,124px);display:inline-flex;align-items:center;justify-content:center;gap:.02em}
-  .biglogo .l2b .o{display:inline-flex;align-items:center;filter:drop-shadow(0 0 10px var(--cyan));margin:0 .01em}
-  /* curved arc swoosh under the wordmark */
-  .biglogo .arc{display:block;width:min(86%,560px);margin:6px auto 0;height:34px}
-  .biglogo .arc path{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;filter:drop-shadow(0 0 8px rgba(120,200,255,.6))}
-  .biglogo .l3{font-family:'Roboto Slab';font-weight:800;font-size:clamp(16px,4vw,32px);
-    color:#fff;text-transform:uppercase;letter-spacing:clamp(8px,3vw,22px);margin-top:-2px;
-    text-shadow:0 0 14px rgba(120,200,255,.6);text-indent:clamp(8px,3vw,22px)}
+    text-transform:uppercase;letter-spacing:-1px;line-height:.8;
+    -webkit-text-stroke:2px #fff;paint-order:stroke fill;
+    text-shadow:0 3px 0 #0a1330,0 0 34px rgba(90,170,255,.55)}
+  .biglogo .l2{font-size:clamp(32px,8.4vw,80px)}
+  .biglogo .l2b{font-size:clamp(52px,14vw,128px);display:inline-flex;align-items:center;justify-content:center;gap:.01em}
+  .biglogo .l2b .o{display:inline-flex;align-items:center;filter:drop-shadow(0 0 10px var(--cyan));margin:0 -.02em;-webkit-text-stroke:0}
+  /* bold curved arc swoosh under the wordmark */
+  .biglogo .arc{display:block;width:min(92%,600px);margin:0 auto;height:40px}
+  .biglogo .arc path{fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round;filter:drop-shadow(0 0 9px rgba(120,200,255,.6))}
+  .biglogo .l3{font-family:'Roboto Slab';font-weight:800;font-size:clamp(15px,3.6vw,30px);
+    color:#fff;text-transform:uppercase;letter-spacing:clamp(8px,3.4vw,26px);margin-top:0;
+    text-shadow:0 0 14px rgba(120,200,255,.6);text-indent:clamp(8px,3.4vw,26px)}
   .biglogo .l3 b{font-weight:inherit}
   .herotag{max-width:600px;margin:22px auto 0;color:#bcd3f5;font-weight:600;font-size:clamp(15px,2.6vw,19px);
     text-shadow:0 2px 10px rgba(0,0,0,.6);padding:0 10px}
@@ -271,10 +276,12 @@
     <div class="burst"></div>
     <span class="emblem">__EMBLEM_LG__</span>
     <div class="biglogo">
-      <div class="l1">SUPER</div>
-      <div class="l2">EMPLOYMENT</div>
-      <div class="l2b">BR<span class="o">__EMBLEM_O__</span>S.</div>
-      <svg class="arc" viewBox="0 0 560 34" preserveAspectRatio="none"><path d="M6 6 Q280 44 554 6"/></svg>
+      <svg class="super-arc" viewBox="0 0 300 54"><defs><path id="suparc" d="M14 48 Q150 -6 286 48"/></defs><text text-anchor="middle"><textPath href="#suparc" startOffset="50%">SUPER</textPath></text></svg>
+      <div class="stack">
+        <div class="l2">EMPLOYMENT</div>
+        <div class="l2b">BR<span class="o">__EMBLEM_O__</span>S.</div>
+      </div>
+      <svg class="arc" viewBox="0 0 600 40" preserveAspectRatio="none"><path d="M8 8 Q300 52 592 8"/></svg>
       <div class="l3"><b>LEGENDS</b></div>
     </div>
     <p class="herotag">The prediction market where you stake fake coin on which one of your unemployed friends lands a job first. Everyone is here. Pick your fighter.</p>
