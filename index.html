@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SUPER EMPLOYMENT BROS. ULTIMATE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Saira+Condensed:ital,wght@0,600;0,800;1,700;1,900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --red:#e60012; --red2:#ff2a00; --orange:#ff7a00; --gold:#ffcb00;
+    --ink:#111; --paper:#f3f1ec; --white:#fff;
+    --char:#1a1a1d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    font-family:'Saira Condensed',sans-serif;color:var(--ink);overflow-x:hidden;
+    background:var(--paper);min-height:100vh;
+  }
+  /* signature diagonal energy band behind everything */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(115deg,transparent 0 48%,rgba(230,0,18,.06) 48% 52%,transparent 52%),
+      repeating-linear-gradient(115deg,transparent 0 70px,rgba(0,0,0,.015) 70px 72px);
+  }
+  .screen{display:none;position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 16px 90px}
+  .screen.active{display:block}
+
+  /* ---- Smash emblem ---- */
+  .emblem{display:inline-block;vertical-align:middle}
+  .emblem svg{display:block}
+
+  /* ---- skewed angular panels (the Smash UI signature) ---- */
+  .skew{transform:skewX(-9deg)}
+  .unskew{transform:skewX(9deg)}
+
+  /* ===== HEADER BAR ===== */
+  .appbar{position:sticky;top:0;z-index:20;background:#111;color:#fff;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:10px 16px;border-bottom:4px solid var(--red);
+    box-shadow:0 4px 0 rgba(0,0,0,.25)}
+  .appbar .brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+  .appbar .brand b{font-family:'Anton';font-style:italic;font-size:20px;letter-spacing:.5px;
+    text-transform:uppercase;line-height:1}
+  .appbar .brand b span{color:var(--red)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap}
+  .tab{font-family:'Saira Condensed';font-weight:800;font-style:italic;text-transform:uppercase;
+    font-size:14px;letter-spacing:1px;color:#bbb;background:transparent;border:none;cursor:pointer;
+    padding:8px 12px;border-radius:4px;transition:.1s}
+  .tab:hover{color:#fff}
+  .tab.on{color:#fff;background:var(--red)}
+  .coin{font-family:'Anton';background:#fff;color:#111;border-radius:4px;padding:5px 12px;
+    font-size:16px;white-space:nowrap;display:flex;align-items:center;gap:6px}
+  .coin small{font-family:'Saira Condensed';font-weight:800;color:var(--red);font-size:9px;letter-spacing:1px}
+
+  /* ===== TITLE / HERO ===== */
+  .hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;position:relative}
+  .hero .burst{position:absolute;inset:0;z-index:-1;
+    background:
+      radial-gradient(circle at 50% 42%, #fff 0%, #ffe7c2 18%, var(--gold) 30%, var(--orange) 46%, var(--red) 66%, #8a0008 100%);
+  }
+  .hero .burst::after{content:"";position:absolute;inset:0;
+    background:repeating-conic-gradient(from 0deg at 50% 42%, rgba(255,255,255,.10) 0deg 5deg, transparent 5deg 12deg);
+    animation:spin 60s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero .emblem{filter:drop-shadow(0 10px 0 rgba(0,0,0,.25));animation:throb 2.4s ease-in-out infinite}
+  @keyframes throb{50%{transform:scale(1.06)}}
+  .biglogo{margin-top:14px;line-height:.82}
+  .biglogo .l1{font-family:'Saira Condensed';font-weight:900;font-style:italic;font-size:clamp(22px,5vw,40px);
+    letter-spacing:2px;color:#fff;text-shadow:0 3px 0 rgba(0,0,0,.35)}
+  .biglogo .l2,.biglogo .l2b{font-family:'Anton';font-style:italic;color:#fff;
+    text-transform:uppercase;-webkit-text-stroke:3px #5a0006;letter-spacing:1px;
+    text-shadow:0 8px 0 #8a0008,0 12px 24px rgba(0,0,0,.4);line-height:.86}
+  .biglogo .l2{font-size:clamp(40px,11vw,104px)}
+  .biglogo .l2b{font-size:clamp(60px,16vw,150px)}
+  .biglogo .l3{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px;
+    font-family:'Anton';font-style:italic;font-size:clamp(20px,5vw,42px);color:#fff;
+    text-transform:uppercase;letter-spacing:8px}
+  .biglogo .l3::before,.biglogo .l3::after{content:"";height:4px;width:clamp(30px,12vw,120px);background:#fff}
+  .biglogo .l3 b{font-weight:inherit}
+  .herotag{max-width:600px;margin:22px auto 0;color:#fff;font-weight:700;font-size:clamp(15px,2.6vw,19px);
+    text-shadow:0 2px 6px rgba(0,0,0,.4);padding:0 10px}
+
+  /* ===== BIG BUTTONS (skewed red) ===== */
+  .btn{position:relative;font-family:'Anton';font-style:italic;cursor:pointer;border:none;
+    text-transform:uppercase;letter-spacing:1px;color:#fff;background:var(--red);
+    padding:14px 30px;font-size:18px;transform:skewX(-9deg);
+    box-shadow:0 6px 0 #8a0008;transition:.08s}
+  .btn > *{display:inline-block;transform:skewX(9deg)}
+  .btn:active{transform:skewX(-9deg) translateY(4px);box-shadow:0 2px 0 #8a0008}
+  .btn.dark{background:#111;box-shadow:0 6px 0 #000}
+  .btn.gold{background:var(--gold);color:#111;box-shadow:0 6px 0 #a98700}
+  .btn.ghost{background:#fff;color:#111;box-shadow:0 6px 0 #c9c4ba}
+  .btn.sm{padding:9px 16px;font-size:14px}
+  .start{margin-top:30px;padding:18px 46px;font-size:26px}
+
+  /* ===== SECTION HEADERS ===== */
+  .shead{display:flex;align-items:center;gap:14px;margin:24px 0 16px}
+  .shead .num{font-family:'Anton';font-style:italic;color:var(--red);font-size:clamp(34px,7vw,56px);line-height:.8}
+  .shead .txt h1{font-family:'Anton';font-style:italic;text-transform:uppercase;font-size:clamp(26px,5vw,44px);
+    line-height:.85;letter-spacing:.5px}
+  .shead .txt p{font-weight:700;font-style:italic;color:#666;text-transform:uppercase;letter-spacing:1px;font-size:13px;margin-top:2px}
+  .rule{height:5px;background:#111;margin:0 0 18px;position:relative;overflow:hidden}
+  .rule::after{content:"";position:absolute;left:0;top:0;height:100%;width:120px;background:var(--red)}
+
+  /* ===== ROSTER GRID (the Smash fighters grid) ===== */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px}
+  .fighter{position:relative;background:var(--char);cursor:pointer;overflow:hidden;
+    border:2px solid #000;outline:3px solid transparent;transition:.1s;
+    aspect-ratio:1/1.18;display:flex;flex-direction:column;justify-content:flex-end}
+  .fighter .cellbg{position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 30%, #3a3a40 0%, #1a1a1d 70%),
+      repeating-linear-gradient(115deg,rgba(255,255,255,.03) 0 8px,transparent 8px 16px)}
+  .fighter:hover{outline-color:var(--red);transform:translateY(-3px);z-index:3;
+    box-shadow:0 10px 24px rgba(0,0,0,.45)}
+  .fighter .no{position:absolute;top:4px;left:6px;font-family:'Anton';font-style:italic;font-size:13px;
+    color:rgba(255,255,255,.55);z-index:2}
+  .fighter .av{position:relative;z-index:2;font-size:46px;text-align:center;margin-bottom:auto;margin-top:24px;
+    filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))}
+  .fighter .plate{position:relative;z-index:2;background:#000;padding:5px 6px}
+  .fighter .nm{font-family:'Anton';font-style:italic;color:#fff;font-size:14px;text-transform:uppercase;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.5px}
+  .fighter .job{font-weight:700;font-style:italic;color:#9a9aa2;font-size:10px;text-transform:uppercase;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:13px}
+  .fighter .hypebar{height:6px;background:#2a2a2e;position:relative;z-index:2}
+  .fighter .hypebar i{display:block;height:100%;
+    background:linear-gradient(90deg,var(--gold),var(--orange) 55%,var(--red))}
+  .fighter .meta{position:relative;z-index:2;display:flex;justify-content:space-between;
+    background:#000;color:#fff;padding:3px 6px;font-family:'Anton';font-style:italic;font-size:12px}
+  .fighter .meta .hp{color:var(--gold)}
+  .fighter .meta .pt{color:#bbb;font-size:10px}
+  .fighter.hired{outline-color:#00d65a}
+  .fighter.hired .badge{position:absolute;top:8px;right:-30px;z-index:4;background:#00b34a;color:#03210f;
+    font-family:'Anton';font-style:italic;font-size:11px;padding:3px 34px;transform:rotate(34deg);
+    box-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .fighter .youtag{position:absolute;top:4px;right:6px;z-index:3;background:var(--red);color:#fff;
+    font-family:'Anton';font-style:italic;font-size:10px;padding:1px 6px}
+  .fighter.add{background:#e7e3da;border-style:dashed;border-color:#999;align-items:center;justify-content:center}
+  .fighter.add .plus{font-family:'Anton';font-style:italic;color:var(--red);font-size:40px}
+  .fighter.add .lab{font-family:'Anton';font-style:italic;color:#555;font-size:12px;text-transform:uppercase;text-align:center}
+
+  /* ===== LIST (bracket / leaderboard) ===== */
+  .list .row{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #111;
+    margin-bottom:8px;padding:8px 12px;position:relative;overflow:hidden}
+  .list .row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--red);transform:skewX(-9deg) translateX(-4px)}
+  .list .rank{font-family:'Anton';font-style:italic;font-size:26px;width:48px;color:#111;text-align:center}
+  .list .av{font-size:34px;width:44px;text-align:center}
+  .list .who{flex:1}
+  .list .who b{font-family:'Anton';font-style:italic;font-size:18px;text-transform:uppercase;display:block;line-height:1}
+  .list .who small{font-weight:700;font-style:italic;color:#777;text-transform:uppercase;font-size:11px;letter-spacing:.5px}
+  .list .amt{font-family:'Anton';font-style:italic;font-size:20px;color:var(--red)}
+  .list .row.win{border-color:#00b34a}
+  .list .row.win .amt{color:#00b34a}
+
+  .hint{font-weight:700;font-style:italic;color:#555;text-transform:uppercase;letter-spacing:.5px;
+    font-size:13px;margin:6px 0 16px;text-align:center}
+  .nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+
+  /* ===== MODALS ===== */
+  .modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;
+    background:rgba(20,0,2,.7);padding:18px}
+  .modal.open{display:flex}
+  .card{background:#fff;border:3px solid #111;max-width:440px;width:100%;position:relative;overflow:hidden}
+  .card .top{background:#111;color:#fff;padding:16px 20px;display:flex;align-items:center;gap:10px}
+  .card .top h2{font-family:'Anton';font-style:italic;text-transform:uppercase;font-size:24px;line-height:1}
+  .card .top h2 .red{color:var(--red)}
+  .card .body{padding:20px}
+  .card .body p.sub{font-weight:700;font-style:italic;color:#555;font-size:13px;text-transform:uppercase;margin-bottom:14px}
+  label.fld{display:block;font-family:'Anton';font-style:italic;font-size:12px;letter-spacing:1px;color:#111;margin:14px 0 6px;text-transform:uppercase}
+  input.in{width:100%;padding:11px;border:2px solid #111;background:#faf9f6;color:#111;
+    font-family:'Saira Condensed';font-weight:700;font-size:16px;outline:none}
+  input.in:focus{border-color:var(--red)}
+  .avpick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .avpick span{font-size:28px;cursor:pointer;padding:4px;border:2px solid transparent}
+  .avpick span.sel{border-color:var(--red);background:#ffe9ea}
+  .row2{display:flex;gap:10px;margin-top:20px}
+  .row2 .btn{flex:1;justify-content:center;text-align:center}
+  .stakebtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .stakebtns .btn{flex:1;min-width:64px;text-align:center}
+
+  /* ===== KO / VICTORY ===== */
+  #ko{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:20px;overflow:hidden;
+    background:radial-gradient(circle at 50% 40%, var(--gold), var(--orange) 40%, var(--red) 75%, #6a0006)}
+  #ko.open{display:flex}
+  #ko::before{content:"";position:absolute;inset:-50%;
+    background:repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.12) 0 4deg, transparent 4deg 10deg);
+    animation:spin 28s linear infinite}
+  #ko > *{position:relative;z-index:2}
+  #ko .av{font-size:120px;animation:bob 1s ease-in-out infinite}
+  @keyframes bob{50%{transform:translateY(-16px) rotate(-5deg)}}
+  #ko .hired{font-family:'Anton';font-style:italic;font-size:clamp(54px,16vw,150px);color:#fff;
+    text-transform:uppercase;-webkit-text-stroke:3px #5a0006;text-shadow:0 8px 0 #8a0008;line-height:.85;letter-spacing:2px}
+  #ko .who{font-family:'Anton';font-style:italic;font-size:clamp(20px,4vw,30px);color:#111;
+    background:#fff;padding:6px 18px;margin-top:8px;transform:skewX(-9deg);text-transform:uppercase}
+  #ko .pay{font-family:'Anton';font-style:italic;color:#fff;font-size:22px;margin-top:18px;
+    background:#111;padding:10px 22px;transform:skewX(-9deg)}
+  .confetti{position:fixed;top:-30px;z-index:61;pointer-events:none;animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+  .foot{text-align:center;color:#999;font-family:'Anton';font-style:italic;font-size:12px;
+    letter-spacing:2px;margin-top:34px;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- APP BAR -->
+<header class="appbar" id="appbar" style="display:none">
+  <div class="brand" onclick="go('roster')">
+    <span class="emblem">__EMBLEM_SM__</span>
+    <b>EMPLOYMENT BR<span>●</span>S.</b>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button class="tab" data-s="roster" onclick="go('roster')">Fighters</button>
+    <button class="tab" data-s="bracket" onclick="go('bracket')">Bracket</button>
+    <button class="tab" data-s="lb" onclick="go('lb')">Rankings</button>
+  </nav>
+  <div class="coin"><small>FUNBUX</small>💰<span id="bal">1000</span></div>
+</header>
+
+<!-- TITLE -->
+<section id="s-title" class="screen active">
+  <div class="hero">
+    <div class="burst"></div>
+    <span class="emblem">__EMBLEM_LG__</span>
+    <div class="biglogo">
+      <div class="l1">SUPER</div>
+      <div class="l2">EMPLOYMENT</div>
+      <div class="l2b">BR●S.</div>
+      <div class="l3"><b>ULTIMATE</b></div>
+    </div>
+    <p class="herotag">The prediction market where you stake fake coin on which one of your unemployed friends lands a job first. Everyone is here. Pick your fighter.</p>
+    <button class="btn start" onclick="enter()"><span>▶ Press Start</span></button>
+    <p class="herotag" style="margin-top:26px;font-size:12px;opacity:.85">FUNBUX ONLY · NO REAL MONEY · FRIENDSHIP-SAFE</p>
+  </div>
+</section>
+
+<!-- ROSTER -->
+<section id="s-roster" class="screen">
+  <div class="shead"><div class="num">01</div><div class="txt"><h1>Choose Your Fighter</h1><p>Everyone is here · tap to back 'em</p></div></div>
+  <div class="rule"></div>
+  <p class="hint">More coin behind a fighter = higher HYPE. When they get hired, backers split the pot.</p>
+  <div class="grid" id="roster"></div>
+  <div class="nav"><button class="btn ghost sm" onclick="resetGame()"><span>Reset Game</span></button></div>
+  <p class="foot">Super Job Bros. Ultimate</p>
+</section>
+
+<!-- BRACKET -->
+<section id="s-bracket" class="screen">
+  <div class="shead"><div class="num">02</div><div class="txt"><h1>The Bracket</h1><p>Race to employment</p></div></div>
+  <div class="rule"></div>
+  <p class="hint">Whoever gets hired first takes the crown 👑</p>
+  <div class="list" id="bracket"></div>
+</section>
+
+<!-- RANKINGS -->
+<section id="s-lb" class="screen">
+  <div class="shead"><div class="num">03</div><div class="txt"><h1>Hype Rankings</h1><p>Crowd's favorite to get hired</p></div></div>
+  <div class="rule"></div>
+  <div class="list" id="lb"></div>
+</section>
+
+<!-- ADD FIGHTER -->
+<div class="modal" id="m-add"><div class="card">
+  <div class="top"><span class="emblem">__EMBLEM_SM__</span><h2>New <span class="red">Challenger</span></h2></div>
+  <div class="body">
+    <p class="sub">Add an (un)employed friend to the roster.</p>
+    <label class="fld">Fighter Name</label>
+    <input class="in" id="f-name" maxlength="14" placeholder="ROBIN" />
+    <label class="fld">Dream Job</label>
+    <input class="in" id="f-job" maxlength="26" placeholder="Creative Director" />
+    <label class="fld">Choose Avatar</label>
+    <div class="avpick" id="avpick"></div>
+    <div class="row2">
+      <button class="btn ghost" onclick="closeM('m-add')"><span>Cancel</span></button>
+      <button class="btn" onclick="saveFighter()"><span>Add ＋</span></button>
+    </div>
+  </div>
+</div></div>
+
+<!-- STAKE -->
+<div class="modal" id="m-stake"><div class="card">
+  <div class="top"><span class="emblem">__EMBLEM_SM__</span><h2 id="st-title">Back Fighter</h2></div>
+  <div class="body">
+    <p class="sub" id="st-sub"></p>
+    <label class="fld">Stake how much FunBux?</label>
+    <input class="in" id="st-amt" type="number" min="1" placeholder="100" />
+    <div class="stakebtns">
+      <button class="btn dark sm" onclick="qa(50)"><span>50</span></button>
+      <button class="btn dark sm" onclick="qa(100)"><span>100</span></button>
+      <button class="btn dark sm" onclick="qa(250)"><span>250</span></button>
+      <button class="btn dark sm" onclick="qaAll()"><span>All In</span></button>
+    </div>
+    <div class="row2"><button class="btn gold" onclick="markHired()"><span>✓ They Got Hired!</span></button></div>
+    <div class="row2">
+      <button class="btn ghost" onclick="closeM('m-stake')"><span>Cancel</span></button>
+      <button class="btn" onclick="confirmStake()"><span>Back 'Em 💰</span></button>
+    </div>
+  </div>
+</div></div>
+
+<!-- KO -->
+<div id="ko">
+  <div class="av" id="ko-av">🎉</div>
+  <div class="hired">HIRED!</div>
+  <div class="who" id="ko-who"></div>
+  <div class="pay" id="ko-pay"></div>
+  <button class="btn dark" style="margin-top:26px" onclick="closeKO()"><span>Continue ▶</span></button>
+</div>
+
+<script>
+// ===== Smash-style emblem (circle + offset cross) =====
+function emblem(size,stroke){
+  const s=size, c=s/2, r=s/2-stroke;
+  return `<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}">
+    <circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="#fff" stroke-width="${stroke}"/>
+    <g stroke="#fff" stroke-width="${stroke}" stroke-linecap="round">
+      <line x1="${c}" y1="${stroke*1.4}" x2="${c}" y2="${c-r*0.18}"/>
+      <line x1="${c}" y1="${c+r*0.18}" x2="${c}" y2="${s-stroke*1.4}"/>
+      <line x1="${stroke*1.4}" y1="${c}" x2="${c-r*0.18}" y2="${c}"/>
+      <line x1="${c+r*0.18}" y1="${c}" x2="${s-stroke*1.4}" y2="${c}"/>
+    </g>
+    <circle cx="${c}" cy="${c}" r="${r*0.12}" fill="#fff"/>
+  </svg>`;
+}
+document.body.innerHTML = document.body.innerHTML
+  .split('__EMBLEM_SM__').join(emblem(26,3))
+  .split('__EMBLEM_LG__').join(emblem(96,7));
+
+const SAFE_AV = ["🦊","🐸","🐙","🐲","🦅","🐺","🦖","🐧","🦁","🐯","🦄","👾","🤖","👽","🐢","🐝","🦋","🐉","🐈","🐰","🐼","🦂","🐳","🦍"];
+const START_BAL = 1000;
+let state = load();
+let pendAv = SAFE_AV[0];
+let stakeTarget = null;
+
+function load(){try{const s=JSON.parse(localStorage.getItem('jobsmash'));if(s&&s.fighters)return s;}catch(e){}return seed();}
+function seed(){return{bal:START_BAL,fighters:[
+  {id:id(),name:"ROBIN",job:"Creative Director",av:"🦊",pot:0,mine:0,hired:false},
+  {id:id(),name:"YOU",job:"Founder (allegedly)",av:"👾",pot:0,mine:0,hired:false,you:true},
+]};}
+function id(){return 'f'+Math.random().toString(36).slice(2,8)}
+function save(){localStorage.setItem('jobsmash',JSON.stringify(state))}
+
+function enter(){go('roster')}
+function go(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s-'+name).classList.add('active');
+  document.getElementById('appbar').style.display = (name==='title')?'none':'flex';
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.s===name));
+  window.scrollTo(0,0); render();
+}
+function render(){
+  const b=document.getElementById('bal'); if(b)b.textContent=state.bal;
+  renderRoster(); renderBracket(); renderLB(); save();
+}
+function totalPot(){return state.fighters.reduce((a,f)=>a+f.pot,0)||1}
+
+function renderRoster(){
+  const wrap=document.getElementById('roster'); if(!wrap)return;
+  const tp=totalPot();
+  wrap.innerHTML = state.fighters.map((f,i)=>{
+    const pct=Math.round(f.pot/tp*100);
+    return `<div class="fighter ${f.hired?'hired':''}" onclick="openStake('${f.id}')">
+      <div class="cellbg"></div>
+      ${f.hired?'<div class="badge">HIRED</div>':''}
+      ${f.you?'<div class="youtag">YOU</div>':''}
+      <div class="no">${String(i+1).padStart(2,'0')}</div>
+      <div class="av">${f.av}</div>
+      <div class="hypebar"><i style="width:${pct}%"></i></div>
+      <div class="plate">
+        <div class="nm">${f.name}</div>
+        <div class="job">${f.job||'undeclared'}</div>
+      </div>
+      <div class="meta"><span class="hp">${pct}% HYPE</span><span class="pt">💰${f.pot}</span></div>
+    </div>`;
+  }).join('') + `<div class="fighter add" onclick="openAdd()"><div class="plus">＋</div><div class="lab">New<br>Challenger</div></div>`;
+}
+function renderBracket(){
+  const wrap=document.getElementById('bracket'); if(!wrap)return;
+  const tp=totalPot();
+  const fs=[...state.fighters].sort((a,b)=>(b.hired-a.hired)||(b.pot-a.pot));
+  wrap.innerHTML=fs.map((f,i)=>{
+    const pct=Math.round(f.pot/tp*100);
+    return `<div class="row ${f.hired?'win':''}">
+      <div class="rank">${f.hired?'👑':'#'+(i+1)}</div>
+      <div class="av">${f.av}</div>
+      <div class="who"><b>${f.name}</b><small>${f.job||'undeclared'} · ${pct}% hype · 💰${f.pot}</small></div>
+      <div class="amt">${f.hired?'WINNER':pct+'%'}</div>
+    </div>`;
+  }).join('')||'<p class="hint">No fighters yet.</p>';
+}
+function renderLB(){
+  const wrap=document.getElementById('lb'); if(!wrap)return;
+  const fs=[...state.fighters].sort((a,b)=>b.pot-a.pot);
+  wrap.innerHTML=fs.map((f,i)=>`<div class="row ${f.hired?'win':''}">
+    <div class="rank">${i+1}</div><div class="av">${f.av}</div>
+    <div class="who"><b>${f.name}</b><small>${f.hired?'✓ HIRED':(f.job||'undeclared')}</small></div>
+    <div class="amt">💰${f.pot}</div></div>`).join('')||'<p class="hint">No fighters yet.</p>';
+}
+
+function openAdd(){
+  pendAv=SAFE_AV[0];
+  document.getElementById('f-name').value='';
+  document.getElementById('f-job').value='';
+  document.getElementById('avpick').innerHTML=SAFE_AV.map(a=>`<span class="${a===pendAv?'sel':''}" onclick="pickAv('${a}',this)">${a}</span>`).join('');
+  openM('m-add');
+}
+function pickAv(a,el){pendAv=a;[...el.parentNode.children].forEach(c=>c.classList.remove('sel'));el.classList.add('sel')}
+function saveFighter(){
+  const name=document.getElementById('f-name').value.trim().toUpperCase()||'CHALLENGER';
+  const job=document.getElementById('f-job').value.trim();
+  state.fighters.push({id:id(),name,job,av:pendAv,pot:0,mine:0,hired:false});
+  closeM('m-add'); render();
+}
+
+function openStake(fid){
+  stakeTarget=state.fighters.find(f=>f.id===fid); if(!stakeTarget)return;
+  document.getElementById('st-title').innerHTML = stakeTarget.hired?`${stakeTarget.name} <span class="red">Hired</span>`:`Back <span class="red">${stakeTarget.name}</span>`;
+  document.getElementById('st-sub').textContent = stakeTarget.hired
+    ? `${stakeTarget.name} already landed the job. Pot paid out.`
+    : `${stakeTarget.av} ${stakeTarget.name} · ${stakeTarget.job||'undeclared'} · 💰${stakeTarget.pot} backing · you hold 💰${state.bal}.`;
+  document.getElementById('st-amt').value='';
+  openM('m-stake');
+}
+function qa(n){document.getElementById('st-amt').value=n}
+function qaAll(){document.getElementById('st-amt').value=state.bal}
+function confirmStake(){
+  const amt=Math.floor(+document.getElementById('st-amt').value);
+  if(!amt||amt<1)return shake();
+  if(amt>state.bal){alert("Not enough FunBux! You hold "+state.bal);return}
+  if(stakeTarget.hired){alert("Too late — already hired.");return}
+  state.bal-=amt; stakeTarget.pot+=amt; stakeTarget.mine+=amt;
+  closeM('m-stake'); render();
+}
+function markHired(){
+  if(!stakeTarget||stakeTarget.hired)return;
+  const w=stakeTarget; let payout=0;
+  if(w.mine>0&&w.pot>0){payout=Math.round(w.mine/w.pot*totalPot())+Math.round(w.mine*0.8);state.bal+=payout;}
+  w.hired=true; closeM('m-stake'); render(); showKO(w,payout);
+}
+function showKO(f,payout){
+  document.getElementById('ko-av').textContent=f.av;
+  document.getElementById('ko-who').textContent=`${f.name} LANDED ${f.job?('“'+f.job+'”'):'A JOB'}!`;
+  document.getElementById('ko-pay').textContent=payout>0?`💰 YOU CASHED OUT ${payout} FUNBUX`:`No coin on ${f.name} — better luck next KO`;
+  document.getElementById('ko').classList.add('open'); burst();
+}
+function closeKO(){document.getElementById('ko').classList.remove('open');render()}
+function burst(){
+  const em=['🎉','💰','⭐','🏆','✨','🔥','💼','👑'];
+  for(let i=0;i<80;i++){const c=document.createElement('div');c.className='confetti';
+    c.textContent=em[i%em.length];c.style.left=Math.random()*100+'vw';
+    c.style.animationDuration=(1.6+Math.random()*2)+'s';c.style.animationDelay=(Math.random()*.6)+'s';
+    c.style.fontSize=(16+Math.random()*22)+'px';document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4200);}
+}
+function openM(id){document.getElementById(id).classList.add('open')}
+function closeM(id){document.getElementById(id).classList.remove('open')}
+function shake(){const e=document.getElementById('st-amt');e.style.borderColor='var(--red)';setTimeout(()=>e.style.borderColor='',400)}
+function resetGame(){if(confirm("Reset the whole game? FunBux and fighters wiped.")){state=seed();save();go('roster')}}
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));
+render();
+</script>
+</body>
+</html>
