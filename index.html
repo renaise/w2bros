@@ -6,7 +6,7 @@
 <title>SUPER EMPLOYMENT BROS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Slab:wght@800;900&family=Saira+Condensed:ital,wght@0,600;0,800;1,700;1,900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@700;800;900&family=Saira+Condensed:ital,wght@0,600;0,800;1,700;1,900&display=swap" rel="stylesheet" />
 <style>
   :root{
     --red:#ff2e4d; --red2:#ff2a00; --orange:#ff7a00; --gold:#ffcb00;
@@ -51,7 +51,7 @@
     padding:10px 16px;border-bottom:2px solid var(--cyan);
     box-shadow:0 0 24px rgba(65,212,255,.3)}
   .appbar .brand{display:flex;align-items:center;gap:10px;cursor:pointer}
-  .appbar .brand b{font-family:'Roboto Slab';font-weight:900;font-size:19px;letter-spacing:.3px;
+  .appbar .brand b{font-family:'Cinzel';font-weight:900;font-size:18px;letter-spacing:.3px;
     text-transform:uppercase;line-height:1}
   .appbar .brand b span{color:var(--cyan)}
   .tabs{display:flex;gap:6px;flex-wrap:wrap}
@@ -81,22 +81,22 @@
   .biglogo{margin-top:14px;line-height:.74;filter:drop-shadow(0 8px 22px rgba(20,60,160,.45))}
   /* arched SUPER */
   .biglogo .super-arc{display:block;width:min(54%,300px);margin:0 auto -2px;height:54px;overflow:visible}
-  .biglogo .super-arc text{font-family:'Roboto Slab';font-weight:900;font-size:42px;fill:#fff;
-    letter-spacing:2px;paint-order:stroke;stroke:#fff;stroke-width:2px}
+  .biglogo .super-arc text{font-family:'Cinzel';font-weight:900;font-size:40px;fill:#fff;
+    letter-spacing:1px;paint-order:stroke;stroke:#fff;stroke-width:1.5px}
   /* big stacked words with fan perspective */
   .biglogo .stack{transform:perspective(620px) rotateX(11deg);transform-origin:center top}
-  .biglogo .l2,.biglogo .l2b{font-family:'Roboto Slab';font-weight:900;color:#fff;
-    text-transform:uppercase;letter-spacing:-1px;line-height:.8;
-    -webkit-text-stroke:2px #fff;paint-order:stroke fill;
+  .biglogo .l2,.biglogo .l2b{font-family:'Cinzel';font-weight:900;color:#fff;
+    text-transform:uppercase;letter-spacing:-1px;line-height:.86;
+    -webkit-text-stroke:1.5px #fff;paint-order:stroke fill;
     text-shadow:0 3px 0 #0a1330,0 0 34px rgba(90,170,255,.55)}
-  .biglogo .l2{font-size:clamp(32px,8.4vw,80px)}
-  .biglogo .l2b{font-size:clamp(52px,14vw,128px);display:inline-flex;align-items:center;justify-content:center;gap:.01em}
-  .biglogo .l2b .o{display:inline-flex;align-items:center;filter:drop-shadow(0 0 10px var(--cyan));margin:0 -.02em;-webkit-text-stroke:0}
+  .biglogo .l2{font-size:clamp(30px,7.6vw,74px)}
+  .biglogo .l2b{font-size:clamp(48px,12.6vw,116px);display:inline-flex;align-items:center;justify-content:center;gap:.01em}
+  .biglogo .l2b .o{display:inline-flex;align-items:center;filter:drop-shadow(0 0 10px var(--cyan));margin:0 -.04em;-webkit-text-stroke:0}
   /* bold curved arc swoosh under the wordmark */
-  .biglogo .arc{display:block;width:min(92%,600px);margin:0 auto;height:40px}
+  .biglogo .arc{display:block;width:min(92%,600px);margin:4px auto 0;height:40px}
   .biglogo .arc path{fill:none;stroke:#fff;stroke-width:7;stroke-linecap:round;filter:drop-shadow(0 0 9px rgba(120,200,255,.6))}
-  .biglogo .l3{font-family:'Roboto Slab';font-weight:800;font-size:clamp(15px,3.6vw,30px);
-    color:#fff;text-transform:uppercase;letter-spacing:clamp(8px,3.4vw,26px);margin-top:0;
+  .biglogo .l3{font-family:'Cinzel';font-weight:800;font-size:clamp(15px,3.6vw,30px);
+    color:#fff;text-transform:uppercase;letter-spacing:clamp(8px,3.4vw,26px);margin-top:2px;
     text-shadow:0 0 14px rgba(120,200,255,.6);text-indent:clamp(8px,3.4vw,26px)}
   .biglogo .l3 b{font-weight:inherit}
   .herotag{max-width:600px;margin:22px auto 0;color:#bcd3f5;font-weight:600;font-size:clamp(15px,2.6vw,19px);
@@ -115,6 +115,10 @@
   .btn.ghost{background:rgba(255,255,255,.08);color:#fff;box-shadow:0 6px 0 rgba(0,0,0,.5),inset 0 0 0 1px rgba(120,180,255,.25)}
   .btn.sm{padding:9px 16px;font-size:14px}
   .start{margin-top:30px;padding:18px 46px;font-size:26px}
+  .rtf{background:linear-gradient(180deg,#ffd34d,#ff8a00 55%,#ff5400);color:#3a1500;
+    box-shadow:0 7px 0 #b03b00,0 0 34px rgba(255,138,0,.55);font-size:clamp(22px,5vw,32px);
+    animation:rtfpulse 1.6s ease-in-out infinite}
+  @keyframes rtfpulse{50%{filter:brightness(1.12)}}
 
   /* ===== SECTION HEADERS ===== */
   .shead{display:flex;align-items:center;gap:14px;margin:24px 0 16px}
@@ -200,6 +204,35 @@
     font-size:13px;margin:6px 0 16px;text-align:center}
   .nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:28px}
 
+  /* ===== TOURNAMENT BRACKET TREE ===== */
+  .bracket-tree{display:flex;gap:26px;overflow-x:auto;padding:8px 4px 18px;align-items:stretch}
+  .round{display:flex;flex-direction:column;justify-content:space-around;gap:12px;min-width:184px;flex:0 0 auto}
+  .round .rhead{font-family:'Anton';font-style:italic;text-transform:uppercase;color:var(--cyan);
+    font-size:13px;letter-spacing:1px;text-align:center;margin-bottom:2px;text-shadow:0 0 10px rgba(65,212,255,.5)}
+  .match{position:relative;background:rgba(8,16,40,.7);border:1px solid rgba(120,180,255,.22);
+    border-radius:6px;padding:5px;display:flex;flex-direction:column;gap:4px;backdrop-filter:blur(3px)}
+  .round:not(.r-champ) .match::after{content:"";position:absolute;right:-26px;top:50%;width:26px;height:2px;
+    background:rgba(120,180,255,.3)}
+  .slot{display:flex;align-items:center;gap:8px;padding:7px 9px;cursor:pointer;border-radius:4px;
+    background:rgba(255,255,255,.04);border:1px solid transparent;transition:.1s}
+  .slot:hover{background:rgba(65,212,255,.12)}
+  .slot.win{border-color:var(--cyan);background:linear-gradient(90deg,rgba(65,212,255,.22),rgba(31,123,255,.12));
+    box-shadow:0 0 12px rgba(65,212,255,.3)}
+  .slot.tbd{opacity:.4;cursor:default;font-style:italic}
+  .slot .sav{font-size:22px;width:24px;text-align:center}
+  .slot .snm{font-family:'Anton';font-style:italic;color:#fff;font-size:14px;text-transform:uppercase;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+  .slot .sseed{font-family:'Anton';font-style:italic;color:#7f97c4;font-size:11px}
+  .r-champ{justify-content:center}
+  .champ-card{background:linear-gradient(160deg,#ffd34d,#ff8a00);border-radius:10px;padding:14px 12px;text-align:center;
+    box-shadow:0 0 30px rgba(255,160,0,.5);min-width:184px}
+  .champ-card.empty{background:rgba(255,255,255,.05);box-shadow:none;border:1px dashed rgba(120,180,255,.3)}
+  .champ-card .crown{font-size:34px}
+  .champ-card .cav{font-size:48px;line-height:1;margin:2px 0}
+  .champ-card .cnm{font-family:'Anton';font-style:italic;color:#3a1500;font-size:20px;text-transform:uppercase}
+  .champ-card.empty .cnm{color:#7f97c4}
+  .champ-card .clbl{font-family:'Anton';font-style:italic;color:#5a2a00;font-size:11px;letter-spacing:1px}
+
   /* ===== MODALS ===== */
   .modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;
     background:rgba(20,0,2,.7);padding:18px}
@@ -263,8 +296,8 @@
     <b>EMPLOYMENT BR<span>●</span>S</b>
   </div>
   <nav class="tabs" id="tabs">
-    <button class="tab" data-s="roster" onclick="go('roster')">Fighters</button>
     <button class="tab" data-s="bracket" onclick="go('bracket')">Bracket</button>
+    <button class="tab" data-s="roster" onclick="go('roster')">Fighters</button>
     <button class="tab" data-s="lb" onclick="go('lb')">Rankings</button>
   </nav>
   <div class="coin"><small>FUNBUX</small>💰<span id="bal">1000</span></div>
@@ -285,14 +318,14 @@
       <div class="l3"><b>LEGENDS</b></div>
     </div>
     <p class="herotag">The prediction market where you stake fake coin on which one of your unemployed friends lands a job first. Everyone is here. Pick your fighter.</p>
-    <button class="btn start" onclick="enter()"><span>▶ Press Start</span></button>
+    <button class="btn start rtf" onclick="enter()"><span>READY TO FIGHT ▶</span></button>
     <p class="herotag" style="margin-top:26px;font-size:12px;opacity:.85">FUNBUX ONLY · NO REAL MONEY · FRIENDSHIP-SAFE</p>
   </div>
 </section>
 
 <!-- ROSTER -->
 <section id="s-roster" class="screen">
-  <div class="shead"><div class="num">01</div><div class="txt"><h1>Choose Your Fighter</h1><p>Everyone is here · tap to back 'em</p></div></div>
+  <div class="shead"><div class="num">02</div><div class="txt"><h1>Choose Your Fighter</h1><p>Everyone is here · tap to back 'em</p></div></div>
   <div class="rule"></div>
   <p class="hint">More coin behind a fighter = higher HYPE. When they get hired, backers split the pot.</p>
   <div class="gridwrap"><div class="grid" id="roster"></div></div>
@@ -306,10 +339,14 @@
 
 <!-- BRACKET -->
 <section id="s-bracket" class="screen">
-  <div class="shead"><div class="num">02</div><div class="txt"><h1>The Bracket</h1><p>Race to employment</p></div></div>
+  <div class="shead"><div class="num">01</div><div class="txt"><h1>Tournament Bracket</h1><p>Tap who advances · last one standing gets hired first</p></div></div>
   <div class="rule"></div>
-  <p class="hint">Whoever gets hired first takes the crown 👑</p>
-  <div class="list" id="bracket"></div>
+  <p class="hint">Single elimination, 8 seeds (top by hype). Tap the fighter you back to advance them each round.</p>
+  <div class="bracket-tree" id="bracket"></div>
+  <div class="nav">
+    <button class="btn blue" onclick="reseedBracket(true)"><span>↻ Reseed (Top 8 Hype)</span></button>
+    <button class="btn ghost sm" onclick="go('roster')"><span>＋ Back Fighters</span></button>
+  </div>
 </section>
 
 <!-- RANKINGS -->
@@ -452,7 +489,7 @@ function seed(){return{bal:START_BAL,buyin:5,players:[],fighters:ROSTER.map(([na
 function id(){return 'f'+Math.random().toString(36).slice(2,8)}
 function save(){localStorage.setItem('jobsmash4',JSON.stringify(state))}
 
-function enter(){go('roster')}
+function enter(){go('bracket')}
 function go(name){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById('s-'+name).classList.add('active');
@@ -505,19 +542,53 @@ function renderDock(){
     </div>`;
   }).join('');
 }
+/* ===== Tournament bracket (single elim, 8 seeds) ===== */
+function fById(id){return state.fighters.find(f=>f.id===id)}
+function ensureBracket(){
+  if(!state.br||!Array.isArray(state.br.seeds)||state.br.seeds.length<8) reseedBracket(false);
+}
+function reseedBracket(announce){
+  const top=[...state.fighters].sort((a,b)=>(b.pot-a.pot)).slice(0,8);
+  state.br={seeds:top.map(f=>f.id),picks:{}};
+  save(); if(announce){renderBracket();}
+}
+// match participants computed from prior picks; stale picks auto-clear
+function bracketState(){
+  const s=state.br.seeds, p=state.br.picks;
+  const r1=[[s[0],s[1]],[s[2],s[3]],[s[4],s[5]],[s[6],s[7]]];
+  const clean=(k,a,b)=>{ if(p[k]&&p[k]!==a&&p[k]!==b)delete p[k]; return p[k]||null; };
+  const w1=r1.map((m,i)=>clean('r1m'+i,m[0],m[1]));
+  const r2=[[w1[0],w1[1]],[w1[2],w1[3]]];
+  const w2=r2.map((m,i)=>clean('r2m'+i,m[0],m[1]));
+  const fM=[w2[0],w2[1]];
+  const champ=clean('F',fM[0],fM[1]);
+  return {r1,w1,r2,w2,fM,champ};
+}
+function pickWin(matchKey,fid){ if(!fid)return; state.br.picks[matchKey]=fid; save(); renderBracket(); if(matchKey==='F'){burst();} }
+function slot(matchKey,fid,seedNo){
+  if(!fid) return `<div class="slot tbd"><span class="sav">·</span><span class="snm">TBD</span></div>`;
+  const f=fById(fid); if(!f) return `<div class="slot tbd"><span class="snm">—</span></div>`;
+  const won=state.br.picks[matchKey]===fid;
+  return `<div class="slot ${won?'win':''}" onclick="pickWin('${matchKey}','${fid}')">
+    <span class="sav">${f.av}</span><span class="snm">${f.name}</span>${seedNo?`<span class="sseed">#${seedNo}</span>`:''}</div>`;
+}
 function renderBracket(){
   const wrap=document.getElementById('bracket'); if(!wrap)return;
-  const tp=totalPot();
-  const fs=[...state.fighters].sort((a,b)=>(b.hired-a.hired)||(b.pot-a.pot));
-  wrap.innerHTML=fs.map((f,i)=>{
-    const pct=Math.round(f.pot/tp*100);
-    return `<div class="row ${f.hired?'win':''}">
-      <div class="rank">${f.hired?'👑':'#'+(i+1)}</div>
-      <div class="av">${f.av}</div>
-      <div class="who"><b>${f.name}</b><small>${f.job||'undeclared'} · ${pct}% hype · 💰${f.pot}</small></div>
-      <div class="amt">${f.hired?'WINNER':pct+'%'}</div>
-    </div>`;
-  }).join('')||'<p class="hint">No fighters yet.</p>';
+  ensureBracket();
+  const b=bracketState(); const seedNo={};
+  state.br.seeds.forEach((id,i)=>seedNo[id]=i+1);
+  const m=(k,a,bb)=>`<div class="match">${slot(k,a,seedNo[a])}${slot(k,bb,seedNo[bb])}</div>`;
+  const champCard = b.champ
+    ? `<div class="champ-card"><div class="crown">👑</div><div class="cav">${fById(b.champ).av}</div><div class="cnm">${fById(b.champ).name}</div><div class="clbl">PREDICTED FIRST HIRE</div></div>`
+    : `<div class="champ-card empty"><div class="crown">👑</div><div class="cnm">Champion</div><div class="clbl">TBD</div></div>`;
+  wrap.innerHTML=`
+    <div class="round"><div class="rhead">Round of 8</div>
+      ${m('r1m0',b.r1[0][0],b.r1[0][1])}${m('r1m1',b.r1[1][0],b.r1[1][1])}${m('r1m2',b.r1[2][0],b.r1[2][1])}${m('r1m3',b.r1[3][0],b.r1[3][1])}</div>
+    <div class="round"><div class="rhead">Semifinals</div>
+      ${m('r2m0',b.r2[0][0],b.r2[0][1])}${m('r2m1',b.r2[1][0],b.r2[1][1])}</div>
+    <div class="round"><div class="rhead">Final</div>
+      ${m('F',b.fM[0],b.fM[1])}</div>
+    <div class="round r-champ"><div class="rhead">Champion</div>${champCard}</div>`;
 }
 function renderLB(){
   const wrap=document.getElementById('lb'); if(!wrap)return;
