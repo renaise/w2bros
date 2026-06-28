@@ -282,7 +282,7 @@
   <div class="gridwrap"><div class="grid" id="roster"></div></div>
   <div class="dock" id="dock"></div>
   <div class="nav"><button class="btn ghost sm" onclick="resetGame()"><span>Reset Game</span></button></div>
-  <p class="foot">Super Job Bros. Ultimate</p>
+  <p class="foot">Super Employment Bros · Legends</p>
 </section>
 
 <!-- BRACKET -->
@@ -374,10 +374,18 @@ let state = load();
 let pendAv = SAFE_AV[0];
 let stakeTarget = null;
 
-function load(){try{const s=JSON.parse(localStorage.getItem('jobsmash'));if(s&&s.fighters)return s;}catch(e){}return seed();}
-function seed(){return{bal:START_BAL,fighters:[]};}
+function load(){try{const s=JSON.parse(localStorage.getItem('jobsmash3'));if(s&&s.fighters)return s;}catch(e){}return seed();}
+const ROSTER=[
+  ["MARIO","🍄","Plumber (laid off)"],["LINK","🗡️","Blacksmith"],["PIKACHU","⚡","Electrician"],
+  ["KIRBY","🩷","Food Critic"],["FOX","🦊","Test Pilot"],["DONKEY KONG","🦍","Warehouse Lead"],
+  ["SAMUS","🚀","Bounty Hunter"],["YOSHI","🦖","Babysitter"],["BOWSER","🐉","Property Manager"],
+  ["SONIC","🦔","Delivery Driver"],["PAC-MAN","🟡","QA Tester"],["CAPT. FALCON","🏎️","Rideshare Driver"],
+  ["NESS","🧢","Child Therapist"],["ZELDA","👑","Civil Servant"],["SNAKE","📦","Logistics (covert)"],
+  ["MEGA MAN","🤖","IT Support"],["LUIGI","👻","Exterminator"],["JIGGLYPUFF","🎤","Lounge Singer"],
+];
+function seed(){return{bal:START_BAL,fighters:ROSTER.map(([name,av,job])=>({id:id(),name,av,job,pot:0,mine:0,hired:false}))};}
 function id(){return 'f'+Math.random().toString(36).slice(2,8)}
-function save(){localStorage.setItem('jobsmash',JSON.stringify(state))}
+function save(){localStorage.setItem('jobsmash3',JSON.stringify(state))}
 
 function enter(){go('roster')}
 function go(name){
