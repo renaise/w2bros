@@ -450,7 +450,6 @@ document.body.innerHTML = document.body.innerHTML
 
 const SAFE_AV = ["🦊","🐸","🐙","🐲","🦅","🐺","🦖","🐧","🦁","🐯","🦄","👾","🤖","👽","🐢","🐝","🦋","🐉","🐈","🐰","🐼","🦂","🐳","🦍"];
 const START_BAL = 1000;
-let state = load();
 let pendAv = SAFE_AV[0];
 let stakeTarget = null;
 
@@ -488,6 +487,8 @@ const ROSTER=[
 function seed(){return{bal:START_BAL,buyin:5,players:[],fighters:ROSTER.map(([name,av,job])=>({id:id(),name,av,job,pot:0,mine:0,hired:false}))};}
 function id(){return 'f'+Math.random().toString(36).slice(2,8)}
 function save(){localStorage.setItem('jobsmash4',JSON.stringify(state))}
+
+let state = load();
 
 function enter(){go('bracket')}
 function go(name){
